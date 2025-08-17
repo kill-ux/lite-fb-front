@@ -1,0 +1,94 @@
+
+
+/* Centering */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+/* Form box */
+.formBox {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  height: auto; /* Set to auto to fit content */
+  width: 50vh;
+  gap: 16px; /* Adds gap between elements */
+}
+
+/* Heading */
+.heading {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Input fields */
+.inputGroup {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.inputField {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Scale effect on focus */
+.inputField:focus {
+  border-color: #66a6ff;
+  box-shadow: 0px 0px 8px rgba(102, 166, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* Submit Button */
+.submitBtn {
+  width: 100%;
+  background: #66a6ff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition:  0.3s, transform 0.2s;
+}
+
+/* Button hover effect */
+.submitBtn:hover {
+  background: #5590e3;
+  transform: scale(1.05);
+}
+
+/* Signup Link Section */
+.signup-link {
+  text-align: center;
+  margin-top: 0; /* Remove top margin */
+}
+
+.signup-link p {
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+
