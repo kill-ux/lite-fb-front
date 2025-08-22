@@ -1,20 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root{
-    --bg-color: #1877F2;
+    --bg-color: #3b82f6;
+    --hover-color: #2563eb;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 nav {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    background: #fff;
-    padding: 10px 20px !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 16px 24px !important;
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav > :first-child {
@@ -30,62 +35,91 @@ nav > :last-child {
 }
 
 nav.disable {
-    grid-template-columns: 1fr; /* Reduce to one column */
+    grid-template-columns: 1fr;
 }
 
 nav.disable > :first-child {
-    justify-self: center; /* Center the first item */
+    justify-self: center;
 }
 
 nav.disable > :nth-child(2),
 nav.disable > :last-child {
-    display: none; /* Hide the second and third items */
+    display: none;
 }
 
-
-/* Container for logo and icons */
 .nav-center {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
     justify-content: center;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    padding: 5px 10px;
-    font-size: 1.7rem;
-    font-weight: 400;
+    padding: 8px 16px;
+    font-size: 24px;
+    font-weight: 700;
     color: var(--bg-color);
-    text-transform: uppercase;
-    font-family: var(--font-family-2);
+    text-transform: none;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+    transition: all 200ms ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logo span {
-    font-family: 'Poppins', sans-serif; /* Example bold font */
-    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     color: var(--bg-color);
+    background: linear-gradient(135deg, var(--bg-color), var(--hover-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
-
 
 .icons {
     display: flex;
-    gap: 20px;
+    gap: 8px;
+    align-items: center;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 200ms ease;
+    position: relative;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.menu-item:hover {
+    background: #f3f4f6;
+    transform: translateY(-1px);
+}
+
+.menu-item.active {
+    background: linear-gradient(135deg, var(--bg-color), var(--hover-color));
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .icons svg {
-    font-size: 24px;
-    color: #333;
-    cursor: pointer;
-    transition: 0.3s;
+    font-size: 22px;
+    color: inherit;
+    transition: all 200ms ease;
 }
 
-.icons svg:hover {
-    color: var(--bg-color);
+.menu-item:hover svg {
+    transform: scale(1.1);
 }
 
-/* Profile Image */
 nav img {
     width: 40px;
     height: 40px;
@@ -93,6 +127,12 @@ nav img {
     object-fit: cover;
     cursor: pointer;
     border: 2px solid var(--bg-color);
+    transition: all 200ms ease;
+}
+
+nav img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .notification {
@@ -102,24 +142,108 @@ nav img {
 
 .notification .pop-out {
     position: absolute;
-    left: -209px;
-    top: 50px;
+    left: -240px;
+    top: 60px;
+    z-index: 1000;
 }
+
+.notification .count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
 .nav-center {
-        
     width: 100%;
 }
-.icons{
+
+.icons {
     width: 100%;
     justify-content: space-evenly;
 }
+
+/* Profile SVG Styling */
+.notification svg[role="img"] {
+    transition: all 200ms ease;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+}
+
+.notification svg[role="img"]:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav:not(.disable) .logo *{
-        display:none;
+    nav:not(.disable) .logo span {
+        font-size: 18px;
     }
+    
     nav {
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: auto 1fr auto;
+        padding: 12px 16px !important;
     }
 
+    .nav-center {
+        gap: 20px;
+    }
+
+    .icons {
+        gap: 4px;
+    }
+
+    .menu-item {
+        padding: 10px;
+    }
+
+    .icons svg {
+        font-size: 20px;
+    }
+
+    .notification .pop-out {
+        left: -200px;
+        top: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        font-size: 16px;
+    }
+    
+    .menu-item {
+        padding: 8px;
+    }
+    
+    .icons svg {
+        font-size: 18px;
+    }
+    
+    nav img {
+        width: 36px;
+        height: 36px;
+    }
 }
