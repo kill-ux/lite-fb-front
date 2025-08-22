@@ -1,10 +1,10 @@
 .form {
     display: flex;
     gap: 12px;
-    margin-block: 16px;
+    margin-block: 8px;
     padding-block: 16px;
-    border-top: 1px solid #e5e7eb;
-    align-items: flex-start;
+    border-top: 1px solid #e2e8f0;
+    align-items: flex-end;
 }
 
 .fileInput {
@@ -14,24 +14,27 @@
 .textInput {
     flex-grow: 1;
     resize: none;
-    border: 1px solid #d1d5db;
+    border: 1px solid #e2e8f0;
     padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.5;
+    border-radius: 20px;
     font-family: inherit;
-    transition: all 200ms ease;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    transition: all 0.2s ease;
+    background: #fafbfc;
     min-height: 44px;
+    max-height: 120px;
 }
 
 .textInput:focus {
     outline: none;
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
 }
 
 .textInput::placeholder {
-    color: #9ca3af;
+    color: #94a3b8;
 }
 
 .addFile {
@@ -39,134 +42,81 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 200ms ease;
-    color: #6b7280;
-    border: 1px solid #d1d5db;
-    min-width: 44px;
-    height: 44px;
+    transition: all 0.2s ease;
+    color: #64748b;
 }
 
 .addFile:hover {
-    background-color: #f3f4f6;
-    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
     color: #3b82f6;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .content {
     white-space: pre-wrap;
     line-break: anywhere;
-    margin: 16px 0;
+    margin: 12px 0;
     padding: 16px;
-    border-left: 3px solid #e5e7eb;
-    background: #f9fafb;
-    border-radius: 0 8px 8px 0;
-    font-size: 14px;
+    border-left: 3px solid #3b82f6;
+    background: #f8fafc;
+    border-radius: 0 12px 12px 0;
+    font-size: 0.9rem;
     line-height: 1.6;
-    color: #374151;
+    color: #1e293b;
 }
 
 .comment {
-    font-size: 14px;
+    font-size: 0.9rem;
     text-align: left;
     background: white;
     border-radius: 12px;
     padding: 16px;
-    margin: 12px 0;
-    border: 1px solid #e5e7eb;
-    transition: all 200ms ease;
+    margin: 8px 0;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
 }
 
 .comment:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transform: translateY(-1px);
 }
 
 .comment span,
 .comment svg {
-    font-size: 16px;
+    font-size: 1rem;
     text-align: left;
 }
 
 .footerText {
     margin-right: 8px;
     padding-inline: 8px;
-    font-size: 13px;
     font-weight: 500;
-    color: #6b7280;
+    color: #64748b;
+    font-size: 0.85rem;
 }
 
 .actionButtons {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    gap: 12px;
     margin-top: 12px;
-}
-
-.actionButtons button {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 200ms ease;
-    font-family: inherit;
-}
-
-.actionButtons button:hover {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-}
-
-.actionButtons button:active {
-    transform: translateY(0);
-}
-
-/* Image preview in comment form */
-.addFile img {
-    max-width: 40px;
-    max-height: 40px;
-    border-radius: 4px;
-    object-fit: cover;
-}
-
-/* Comment images */
-.comment img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
 }
 
 @media screen and (max-width: 992px) {
     .content {
-        margin: 12px 0;
+        margin: 12px 8px;
         padding: 12px;
     }
     
     .form {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
     }
-    
-    .actionButtons {
-        justify-content: flex-end;
-    }
-    
-    .comment {
-        padding: 12px;
-        margin: 8px 0;
-    }
-    
+
     .textInput {
-        min-height: 40px;
-        padding: 10px 12px;
-        font-size: 13px;
+        border-radius: 12px;
     }
 }

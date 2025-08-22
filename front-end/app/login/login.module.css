@@ -12,27 +12,28 @@
 .formBox {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
   text-align: center;
   width: 100%;
-  max-width: 400px;
-  gap: 24px;
-  backdrop-filter: blur(10px);
+  max-width: 420px;
+  gap: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Heading */
 .heading {
   margin-bottom: 8px;
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
   background: linear-gradient(135deg, #667eea, #764ba2);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Input fields */
@@ -46,12 +47,17 @@
   width: 100%;
   padding: 16px 20px;
   margin: auto;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #e2e8f0;
   border-radius: 12px;
   font-size: 16px;
-  transition: all 300ms ease;
-  background: #f9fafb;
   font-family: inherit;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1e293b;
+}
+
+.inputField::placeholder {
+  color: #94a3b8;
 }
 
 /* Scale effect on focus */
@@ -63,24 +69,19 @@
   background: white;
 }
 
-.inputField::placeholder {
-  color: #9ca3af;
-}
-
 /* Submit Button */
 .submitBtn {
   width: 100%;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 16px;
+  padding: 16px 24px;
   border: none;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 300ms ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   font-family: inherit;
 }
 
@@ -88,7 +89,7 @@
 .submitBtn:hover {
   background: linear-gradient(135deg, #5a67d8, #6b46c1);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .submitBtn:active {
@@ -98,19 +99,19 @@
 /* Signup Link Section */
 .signup-link {
   text-align: center;
-  margin-top: 0;
+  margin-top: 8px;
 }
 
 .signup-link p {
   font-size: 14px;
-  color: #6b7280;
+  color: #64748b;
 }
 
 .signup-link a {
   color: #667eea;
   text-decoration: none;
   font-weight: 600;
-  transition: all 200ms ease;
+  transition: all 0.2s ease;
 }
 
 .signup-link a:hover {
@@ -121,7 +122,7 @@
 /* Error Popup */
 .errorPopup {
   position: fixed;
-  top: 24px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #ef4444, #dc2626);
@@ -130,12 +131,13 @@
   border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   display: flex;
   align-items: center;
   gap: 12px;
   animation: slideInDown 0.3s ease-out;
   z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes slideInDown {
@@ -149,7 +151,6 @@
   }
 }
 
-/* Responsive design */
 @media (max-width: 480px) {
   .container {
     padding: 16px;
@@ -157,20 +158,19 @@
   
   .formBox {
     padding: 32px 24px;
-    gap: 20px;
+    border-radius: 20px;
   }
   
   .heading {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
   
   .inputField {
     padding: 14px 16px;
-    font-size: 15px;
+    font-size: 16px;
   }
   
   .submitBtn {
-    padding: 14px;
-    font-size: 15px;
+    padding: 14px 20px;
   }
 }

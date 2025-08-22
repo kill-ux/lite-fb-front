@@ -1,22 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
     --bg-color: #3b82f6;
+    --bg-gradient: linear-gradient(135deg, #3b82f6, #2563eb);
     --hover-color: #2563eb;
-    --text-color: #1f2937;
-    --border-color: #e5e7eb;
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 nav {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    background: #ffffff;
-    padding: 16px 24px !important;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 12px 24px !important;
     box-shadow: var(--shadow);
-    border-bottom: 1px solid var(--border-color);
-    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -36,6 +41,7 @@ nav > :last-child {
 
 nav.disable {
     grid-template-columns: 1fr;
+    justify-content: center;
 }
 
 nav.disable > :first-child {
@@ -47,24 +53,32 @@ nav.disable > :last-child {
     display: none;
 }
 
+/* Container for logo and icons */
 .nav-center {
     display: flex;
     align-items: center;
     gap: 40px;
     justify-content: center;
+    background: rgba(59, 130, 246, 0.05);
+    padding: 8px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
 .logo {
     display: flex;
     align-items: center;
     padding: 8px 16px;
-    font-size: 24px;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--bg-color);
-    text-transform: none;
+    background: var(--bg-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
     font-family: 'Inter', sans-serif;
     letter-spacing: -0.5px;
-    transition: all 200ms ease;
+    transition: all 0.3s ease;
 }
 
 .logo:hover {
@@ -74,16 +88,15 @@ nav.disable > :last-child {
 .logo span {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    color: var(--bg-color);
-    background: linear-gradient(135deg, var(--bg-color), var(--hover-color));
+    background: var(--bg-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .icons {
     display: flex;
-    gap: 8px;
+    gap: 16px;
     align-items: center;
 }
 
@@ -93,51 +106,74 @@ nav.disable > :last-child {
     justify-content: center;
     padding: 12px;
     border-radius: 12px;
-    transition: all 200ms ease;
+    transition: all 0.3s ease;
     position: relative;
     text-decoration: none;
-    color: var(--text-color);
+    color: #64748b;
 }
 
 .menu-item:hover {
-    background: #f3f4f6;
-    transform: translateY(-1px);
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--bg-color);
+    transform: translateY(-2px);
 }
 
 .menu-item.active {
-    background: linear-gradient(135deg, var(--bg-color), var(--hover-color));
+    background: var(--bg-gradient);
     color: white;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: var(--shadow);
+}
+
+.menu-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--bg-color);
+    border-radius: 50%;
 }
 
 .icons svg {
     font-size: 22px;
-    color: inherit;
-    transition: all 200ms ease;
+    transition: all 0.3s ease;
 }
 
-.menu-item:hover svg {
+.icons svg:hover {
     transform: scale(1.1);
 }
 
+/* Profile Image */
 nav img {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
-    border: 2px solid var(--bg-color);
-    transition: all 200ms ease;
+    border: 3px solid transparent;
+    background: var(--bg-gradient);
+    padding: 2px;
+    transition: all 0.3s ease;
 }
 
 nav img:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: var(--shadow);
 }
 
 .notification {
     position: relative;
     cursor: pointer;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.notification:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
 }
 
 .notification .pop-out {
@@ -147,37 +183,9 @@ nav img:hover {
     z-index: 1000;
 }
 
-.notification .count {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    color: white;
-    border-radius: 50%;
-    font-size: 11px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
-
 .nav-center {
     width: 100%;
+    max-width: 600px;
 }
 
 .icons {
@@ -185,42 +193,62 @@ nav img:hover {
     justify-content: space-evenly;
 }
 
-/* Profile SVG Styling */
-.notification svg[role="img"] {
-    transition: all 200ms ease;
-    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+.count {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+    border: 2px solid white;
 }
 
-.notification svg[role="img"]:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+/* Enhanced profile SVG styling */
+nav svg[role="img"] {
+    padding: 8px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+nav svg[role="img"]:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     nav:not(.disable) .logo span {
-        font-size: 18px;
+        font-size: 1.4rem;
     }
     
     nav {
-        grid-template-columns: auto 1fr auto;
-        padding: 12px 16px !important;
+        grid-template-columns: 1fr 2fr 1fr;
+        padding: 8px 16px !important;
     }
 
     .nav-center {
         gap: 20px;
+        padding: 6px 16px;
     }
 
     .icons {
-        gap: 4px;
+        gap: 12px;
     }
 
     .menu-item {
-        padding: 10px;
-    }
-
-    .icons svg {
-        font-size: 20px;
+        padding: 8px;
     }
 
     .notification .pop-out {
@@ -230,20 +258,20 @@ nav img:hover {
 }
 
 @media (max-width: 480px) {
-    .logo span {
-        font-size: 16px;
+    .nav-center {
+        gap: 12px;
+        padding: 4px 12px;
     }
-    
+
+    .icons {
+        gap: 8px;
+    }
+
     .menu-item {
-        padding: 8px;
+        padding: 6px;
     }
-    
+
     .icons svg {
-        font-size: 18px;
-    }
-    
-    nav img {
-        width: 36px;
-        height: 36px;
+        font-size: 20px;
     }
 }
